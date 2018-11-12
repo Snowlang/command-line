@@ -31,20 +31,15 @@ func evaluateScriptAndPrintResult(script: String, messenger: Messenger) {
     }
 }
 
-let main = command { (filename: String) in
+let main = command { (script: String) in
     let messenger = Messenger()
     messenger.subscribe(to: .stdout, handler: { message in
         if let result = message.data as? String {
-           // print(result)
+            print("Stout output: \n" + result)
         }
     })
-    //read script in passed in file
-    let script = try String(contentsOfFile: filename)
-    //let script = "import Sys\n Sys.print(\"hello hop\")"
+    print("System output: \n")
     evaluateScriptAndPrintResult(script: script, messenger: messenger)
-
 }
-
-
 
 main.run()
