@@ -1,0 +1,2 @@
+import Sys
+Sys.print("BIM bam boum")
